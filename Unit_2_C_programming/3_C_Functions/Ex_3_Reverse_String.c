@@ -1,20 +1,20 @@
 #include <stdio.h>
 
-void reverse_string(char c[]);
+void reverse_string(void);
 
 int main()
 {
-    char string[100];
-    fgets(string, 100, stdin);
-    reverse_string(string);
+    reverse_string();
     return 0;
 }
 
-void reverse_string(char c[])
+void reverse_string(void)
 {
-    if (*c == 0)
-        return;
-
-    reverse_string(c + 1);
-    printf("%c", *c);
+    char c;
+    scanf("%c", &c);
+    if (c != '\n')
+    {
+        reverse_string();
+        printf("%c", c);
+    }
 }
