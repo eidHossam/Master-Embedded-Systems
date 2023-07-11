@@ -1,5 +1,5 @@
 # Simulation video:
 
 <video width="320" height="240" controls>
-  <source src="https://drive.google.com/file/d/15pk9u4S8C9rplK0Ffjp2a0KD_-Xbk4hb/view?usp=sharing" type="video/mp4">
+  <source src="Unit_3_Embedded_C/Lesson_1/Ex_2_Toggle_LED/Lesson_1_Ex_2_Toggle_LED.mp4" type="video/mp4">
 </video>
