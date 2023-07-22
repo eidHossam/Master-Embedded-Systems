@@ -1,0 +1,51 @@
+$ arm-none-eabi-nm.exe main.o
+0000000c T main
+00000004 D name
+00000000 T NMI_Handler
+00000000 D R_ODR
+00000190 C x
+
+
+$ arm-none-eabi-nm.exe startup.o
+         U _E_bss
+         U _E_DATA
+         U _E_text
+         U _S_bss
+         U _S_DATA
+         U _stack_top
+00000000 T bss_init
+000000a8 W Bus_fault
+00000044 T data_to_ram
+000000a8 T Default_Handler
+000000a8 W H_fault_Handler
+         U main
+000000a8 W MM_fault_Handler
+000000a8 W NMI_Handler
+00000094 T Reset_Handler
+000000a8 W Usage_fault_Handler
+00000000 D vectors
+
+
+
+
+$ arm-none-eabi-nm.exe Toggle_LED_cortexM3.elf
+200001a0 B _E_bss
+20000010 D _E_DATA
+08000158 T _E_text
+20000010 B _S_bss
+20000000 D _S_DATA
+200011a0 B _stack_top
+080000a4 T bss_init
+0800014c W Bus_fault
+080000e8 T data_to_ram
+0800014c T Default_Handler
+0800014c W H_fault_Handler
+08000028 T main
+0800014c W MM_fault_Handler
+20000004 D name
+0800001c T NMI_Handler
+20000000 D R_ODR
+08000138 T Reset_Handler
+0800014c W Usage_fault_Handler
+08000000 T vectors
+20000010 B x
