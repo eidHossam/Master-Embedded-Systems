@@ -1,8 +1,6 @@
 /*Written by Hossam Eid
 for lesson_3 lab_1 in
 learn-in-detpth diploma*/
-.global _reset
-
 
 .section .vectors
 
@@ -23,7 +21,7 @@ learn-in-detpth diploma*/
 .section .text
 
 _reset:
-	b main
+	bl main
 	b .
 
 .thumb_func

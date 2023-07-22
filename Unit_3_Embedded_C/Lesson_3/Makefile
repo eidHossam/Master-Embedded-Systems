@@ -1,5 +1,5 @@
 CC = arm-none-eabi-
-CFLAGS = -gdwarf-2 -mcpu=cortex-m3
+CFLAGS =  -mcpu=cortex-m3 -gdwarf-2
 INC = -I . 
 LIBS=
 SRC = $(wildcard *.c)

@@ -32,6 +32,11 @@ volatile R_ODR_t *R_ODR = (volatile R_ODR_t *)(GPIOA_BASE + 0x0C);
 volatile const char name[] = "Hossam Eid";
 volatile int x[100];
 
+void NMI_Handler(void)
+{
+    
+}
+
 int main()
 {
    APB2ENR |= IOPAEN;
