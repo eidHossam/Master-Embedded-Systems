@@ -1,3 +1,9 @@
+/**
+ * @brief this file implements a simple bare-metal SW to toggle
+ * an LED on the tivaC board.
+ * 
+ */
+
 #define SYSCTL_RCGC2_R       (*((volatile unsigned long *)0x400FE108))
 #define GPIO_PORTF_DATA_R    (*((volatile unsigned long *)0x400253FC))
 #define GPIO_PORTF_DIR_R     (*((volatile unsigned long *)0x40025400))
