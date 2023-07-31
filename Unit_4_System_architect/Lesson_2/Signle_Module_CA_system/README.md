@@ -1,4 +1,4 @@
-## This assignment is practice on:
+## This assignment is a practice on:
 - How to design your system before starting,
 - How to describe your application through block diagrams.
 - How to describe the process of your application through a flow-diagram.
