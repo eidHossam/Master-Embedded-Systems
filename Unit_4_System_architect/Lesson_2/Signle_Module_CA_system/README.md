@@ -9,9 +9,11 @@
 
 ## Block diagram of the system:
 
-![alt text](https://drive.google.com/file/d/1gZ4m7qvU56HPXzL8xxhufWK_mf1Gz4h4/view?usp=drive_link)
+![Signle_Module_CA_block_diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/ad82ecf4-b724-4b2e-b3bc-6025f3ec3bfe)
+
 
 
 ## Flow diagram of the system:
 
-![alt text](https://drive.google.com/file/d/17dG9rQAtcEkP02GAvEypm9KDqXZJ9qsI/view?usp=drive_link)
+![Signle_Module_CA_flow_diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/abb4f03e-d4d5-4629-8870-f47023532587)
+
