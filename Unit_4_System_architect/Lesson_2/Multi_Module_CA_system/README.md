@@ -12,7 +12,7 @@
 ![Block_Diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/1adf534e-6cfc-4067-872b-1fa06dda73bb)
 
 ## Flow diagram of the system:
-- CA application:
+CA application:
   ![CA_App_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/d20b395c-6c9b-420f-9622-b674cf45f50d)
 - DC motor:
   ![DC_Motor_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/e185e2bb-3c4e-457a-ae2e-8db915bcebc2)
