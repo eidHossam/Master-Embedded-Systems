@@ -13,9 +13,9 @@
 
 ## Flow diagram of the system:
 - CA application:
-![CA_App_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/d20b395c-6c9b-420f-9622-b674cf45f50d)
+  ![CA_App_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/d20b395c-6c9b-420f-9622-b674cf45f50d)
 - DC motor:
-![DC_Motor_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/e185e2bb-3c4e-457a-ae2e-8db915bcebc2)
+  ![DC_Motor_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/e185e2bb-3c4e-457a-ae2e-8db915bcebc2)
 - US sensor: 
-![US_Sensor_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/0ade6890-2b5a-4ffc-a303-38fbc20be8ce)
+  ![US_Sensor_Flow-diagram](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/0ade6890-2b5a-4ffc-a303-38fbc20be8ce)
 
