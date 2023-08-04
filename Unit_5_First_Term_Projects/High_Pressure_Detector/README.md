@@ -1,9 +1,8 @@
 ## High pressure detector project based on STM32F103C6 board with Cortex-M3
 
-## The main objective of this project is to start an alarm when the pressure value is over a specific limit for 60 seconds.
-
 ![STM32](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/af5093fe-467e-48f7-9d7d-a780822cd173)
 
+## The main objective of this project is to start an alarm when the pressure value is over a specific threshold of 20 bar.
 
 ## Google Drive 
 ### [Drive](https://drive.google.com/drive/folders/1t-TtS8-zy63dYuKqBTmWGm1xaVTbMjsl?usp=drive_link)
