@@ -32,7 +32,7 @@
 **There is also map_file with all the project symbols and sections of memory which can be found in the bin folder.**
 
 ### Working Code With The Board Simulator:
-### [Drive](https://drive.google.com/file/d/12R6h20Ca0D6ktmP0eUl4OxHXB6c1DI90/view?usp=drive_link)
+### [Simulation_Video](https://drive.google.com/file/d/12R6h20Ca0D6ktmP0eUl4OxHXB6c1DI90/view?usp=drive_link)
 
 
 
