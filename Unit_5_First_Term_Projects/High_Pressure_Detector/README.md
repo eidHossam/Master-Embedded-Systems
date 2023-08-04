@@ -2,7 +2,8 @@
 
 ## The main objective of this project is to start an alarm when the pressure value is over a specific limit for 60 seconds.
 
-![board]
+![STM32](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/af5093fe-467e-48f7-9d7d-a780822cd173)
+
 
 ## Google Drive 
 ### [Drive](https://drive.google.com/drive/folders/1t-TtS8-zy63dYuKqBTmWGm1xaVTbMjsl?usp=drive_link)
@@ -32,7 +33,7 @@
 **There is also map_file with all the project symbols and sections of memory which can be found in the bin folder.**
 
 ### Working Code With The Board Simulator:
-
+### [Drive](https://drive.google.com/file/d/12R6h20Ca0D6ktmP0eUl4OxHXB6c1DI90/view?usp=drive_link)
 
 
 
