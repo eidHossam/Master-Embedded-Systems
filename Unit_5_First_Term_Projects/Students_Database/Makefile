@@ -55,7 +55,7 @@ WRN = -pedantic
 
 INC = -I $(INC_DIR)/
 
-CFLAGS = $(STD) $(WRN) $(INC)
+CFLAGS = $(STD) $(INC)
 
 #----------------------------------
 

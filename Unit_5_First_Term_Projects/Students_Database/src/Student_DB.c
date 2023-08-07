@@ -36,9 +36,9 @@ void add_student_file()
             /*Make sure there are no students with the same roll number*/
             if(search_queue(SEARCH_ROLL, newStudent->roll) == student_found)
             {
-                printf("----------------------------\n");
-                printf("Error\n");
-                printf("----------------------------\n");
+                DPRINTF("----------------------------\n");
+                DPRINTF("Error\n");
+                DPRINTF("----------------------------\n");
 
                 /*Ignore the rest of the line*/
 			    fscanf(student_data_file, "%*[^\n]");
@@ -59,14 +59,14 @@ void add_student_file()
             FIFO_enqueue(newStudent);
         }
 
-        printf("Students added successfully\n");
-        printf("[INFO]Total number of students = %d\n", students_db->size);
-        printf("[INFO]Empty space available = %d\n", (students_db->capacity - students_db->size));
+        DPRINTF("Students added successfully\n");
+        DPRINTF("[INFO]Total number of students = %d\n", students_db->size);
+        DPRINTF("[INFO]Empty space available = %d\n", (students_db->capacity - students_db->size));
 
         fclose(student_data_file);
     }
     else   
-        printf("failed to Open data file\n");
+        DPRINTF("failed to Open data file\n");
 }
 
 void add_student_manually()
@@ -76,7 +76,7 @@ void add_student_manually()
     /*Check if we successfully located memory in the heap for the new student*/
     if(!newStudent)
     {
-        printf("\nCouldn't allocate memory for the student\n");
+        DPRINTF("\nCouldn't allocate memory for the student\n");
         return;
     } 
 
@@ -85,18 +85,18 @@ void add_student_manually()
     /*Check if the roll number we got exists in our database*/
     if(search_queue(SEARCH_ROLL, newStudent->roll) == student_found)
     {
-        printf("\n[FAILED] This roll number is already in the database!.\n");
+        DPRINTF("\n[FAILED] This roll number is already in the database!.\n");
         return;
     }
 
     if(FIFO_enqueue(newStudent) == FIFO_no_error)
     {
-        printf("Student added successfully\n");
-        printf("[INFO]Total number of students = %d\n", students_db->size);
-        printf("[INFO]Empty space available = %d\n", (students_db->capacity - students_db->size));
+        DPRINTF("Student added successfully\n");
+        DPRINTF("[INFO]Total number of students = %d\n", students_db->size);
+        DPRINTF("[INFO]Empty space available = %d\n", (students_db->capacity - students_db->size));
     }else
     {
-        printf("Failed to add the new students\n");
+        DPRINTF("Failed to add the new students\n");
     }
 }
 
@@ -104,13 +104,12 @@ void find_roll()
 {
     int rollNumber;
     
-    fflush(stdin);
-    printf("Enter the roll number to search for: ");
+    DPRINTF("Enter the roll number to search for: ");
     scanf("%d", &rollNumber);
 
     if(search_queue(SEARCH_ROLL, rollNumber) != student_found)
     {
-        printf("Could not find student with roll number %d\n", rollNumber);
+        DPRINTF("Could not find student with roll number %d\n", rollNumber);
     }
 }
 
@@ -118,7 +117,7 @@ void find_fName()
 { 
     if(search_queue(SEARCH_FNAME, SEARCH_FNAME) != student_found)
     {
-        printf("Could not find the student\n");
+        DPRINTF("Could not find the student\n");
     }
 }
 
@@ -126,18 +125,17 @@ void find_students_inCourse()
 {
     int Cid;
     
-    fflush(stdin);
-    printf("Enter the course ID to search for: ");
+    DPRINTF("Enter the course ID to search for: ");
     scanf("%d", &Cid);
 
-    printf("List of students in this course: ");
+    DPRINTF("List of students in this course: ");
     search_queue(SEARCH_COURSE_ID, Cid);    
 }
 
 void total_students()
 {
-    printf("[INFO]Total number of students = %d\n", students_db->size);
-    printf("[INFO]Empty space available = %d\n", (students_db->capacity - students_db->size));
+    DPRINTF("[INFO]Total number of students = %d\n", students_db->size);
+    DPRINTF("[INFO]Empty space available = %d\n", (students_db->capacity - students_db->size));
 
 }
 
@@ -145,9 +143,9 @@ void delete_student()
 {
     if(delete_node() == student_not_found)
     {
-        printf("There is no student with the given roll number.\n");
+        DPRINTF("There is no student with the given roll number.\n");
     }else{
-        printf("The student with the given roll number was deleted successfully.\n");
+        DPRINTF("The student with the given roll number was deleted successfully.\n");
     }
 }
 
@@ -155,9 +153,9 @@ void update_student()
 {
     if(update_node() == student_not_found)
     {
-        printf("There is no student with the given roll number.\n");
+        DPRINTF("There is no student with the given roll number.\n");
     }else{
-        printf("The student with the given roll number was updated successfully.\n");
+        DPRINTF("The student with the given roll number was updated successfully.\n");
     }
 }
 
@@ -166,7 +164,7 @@ void show_students()
     eFIFO_status_t status = print_FIFO(); 
     if(status == FIFO_empty ||status  == FIFO_NULL)
     {
-        printf("\nThe list of students is empty!.\n");
+        DPRINTF("\nThe list of students is empty!.\n");
     }
 }
 
@@ -174,31 +172,21 @@ static void get_student_data(sStudentData_t* student)
 {
     int i;
 
-    fflush(stdin);
-	fflush(stdout);
-    printf("Enter first name: ");
+    DPRINTF("Enter first name: ");
     scanf("%s", student->fName);
         
-    fflush(stdin);
-	fflush(stdout);
-    printf("Enter last name: ");
+    DPRINTF("Enter last name: ");
     scanf("%s", student->lName);
     
-    fflush(stdin);
-	fflush(stdout);
-    printf("Enter roll number: ");
+    DPRINTF("Enter roll number: ");
     scanf("%d", &student->roll);
 
-    fflush(stdin);
-	fflush(stdout);
-    printf("Enter GPA: ");
+    DPRINTF("Enter GPA: ");
     scanf("%f", &student->GPA);
         
     for(i = 0; i < 5; i++)
     {
-        fflush(stdin);
-	    fflush(stdout);
-        printf("Enter course %d ID: ", i + 1);
+        DPRINTF("Enter course %d ID: ", i + 1);
         scanf("%d", &student->Cid[i]);
     }   
 }

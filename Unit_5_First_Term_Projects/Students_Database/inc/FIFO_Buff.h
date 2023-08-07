@@ -25,6 +25,12 @@
 #define SEARCH_COURSE_ID 1
 #define SEARCH_FNAME 2
 
+#define DPRINTF(...) {fflush(stdout); \
+					  fflush(stdin); \
+					  printf(__VA_ARGS__); \
+					  fflush(stdout); \
+					  fflush(stdin);}
+
 typedef struct{
     char fName[50];
     char lName[50];

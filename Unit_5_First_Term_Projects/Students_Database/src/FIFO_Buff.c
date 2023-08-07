@@ -83,7 +83,7 @@ eFIFO_status_t FIFO_enqueue(sStudentData_t* newStudent)
     newNode->student = newStudent;
     students_db->size++;
 
-    /*printf("Student added successfully!.\n");*/
+    /*DPRINTF("Student added successfully!.\n");*/
     return FIFO_no_error;
 }
 
@@ -104,7 +104,7 @@ eFIFO_status_t FIFO_dequeue()
 
     students_db->size--;
 
-    /*printf("Student Deleted successfully!.\n");*/
+    /*DPRINTF("Student Deleted successfully!.\n");*/
     return FIFO_no_error;
 }
 
@@ -122,7 +122,7 @@ eFIFO_status_t delete_node()
         return FIFO_empty;
 
     traverse_nodes = students_db->head;
-    printf("Enter the roll number of the student to delete: ");
+    DPRINTF("Enter the roll number of the student to delete: ");
     scanf("%d", &id);
 
     while(traverse_nodes)
@@ -165,20 +165,20 @@ eFIFO_status_t update_node()
         return FIFO_empty;
 
     traverse_nodes = students_db->head;
-    printf("Enter the roll number of the student to update: ");
+    DPRINTF("Enter the roll number of the student to update: ");
     scanf("%d", &id);
 
     while(traverse_nodes)
     {
         if(traverse_nodes->student->roll == id)
         {
-            printf("\nWhich date do you want to change ?\n");
-	        printf("\t 1: The Roll Number\n");
-	        printf("\t 2: The First Name\n");
-	        printf("\t 3: The Second Name\n");
-	        printf("\t 4: The GPA Score\n");
-	        printf("\t 5: The Courses ID\n");
-	        printf("Enter your option: ");   
+            DPRINTF("\nWhich date do you want to change ?\n");
+	        DPRINTF("\t 1: The Roll Number\n");
+	        DPRINTF("\t 2: The First Name\n");
+	        DPRINTF("\t 3: The Second Name\n");
+	        DPRINTF("\t 4: The GPA Score\n");
+	        DPRINTF("\t 5: The Courses ID\n");
+	        DPRINTF("Enter your option: ");   
             scanf("%d", &choice);
 
             (* p_update_funcs[choice - 1]) (traverse_nodes->student);
@@ -251,13 +251,13 @@ eFIFO_status_t print_student(sStudentData_t* newStudent)
     if(!newStudent)
         return FIFO_NULL;
 
-    printf("\nFirst name: %s\nLast name: %s\n",newStudent->fName, newStudent->lName);
-    printf("Roll number: %d\nGPa: %f\n", newStudent->roll, newStudent->GPA);
-    printf("List of courses:\n");
+    DPRINTF("\nFirst name: %s\nLast name: %s\n",newStudent->fName, newStudent->lName);
+    DPRINTF("Roll number: %d\nGPa: %f\n", newStudent->roll, newStudent->GPA);
+    DPRINTF("List of courses:\n");
 
     for(i = 0; i < 5; i++)
     {
-        printf("%d-Course ID: %d\n", (i + 1), newStudent->Cid[i]);
+        DPRINTF("%d-Course ID: %d\n", (i + 1), newStudent->Cid[i]);
     }
 }
 
@@ -265,7 +265,7 @@ static eFIFO_status_t search_roll(sStudentData_t* student_data, int rollNum)
 {
     if(student_data->roll == rollNum)
     {
-        printf("Student with this roll number found:");
+        DPRINTF("Student with this roll number found:");
         print_student(student_data);
         return student_found;
     }
@@ -279,7 +279,7 @@ static eFIFO_status_t search_courseID(sStudentData_t* student_data, int Cid)
     {
         if(student_data->Cid[i] == Cid)
         {
-            printf("\n-------------------------------------------------");
+            DPRINTF("\n-------------------------------------------------");
             print_student(student_data);
             break;
         }
@@ -292,14 +292,14 @@ static eFIFO_status_t search_fName(sStudentData_t* student_data, int empty)
     static char name[50];
     if(first_time_in_func == 1)
     {
-        printf("Enter the first name of the student: ");
+        DPRINTF("Enter the first name of the student: ");
         scanf("%s", name);
         first_time_in_func = 0;
     }
 
     if(strcasecmp(student_data->fName, name) == 0)
     {
-        printf("Student with this first name found:");
+        DPRINTF("Student with this first name found:");
         print_student(student_data);
         return student_found;
     }
@@ -308,28 +308,26 @@ static eFIFO_status_t search_fName(sStudentData_t* student_data, int empty)
 
 static void update_roll(sStudentData_t* student)
 {
-    fflush(stdin);
-    printf("Enter roll number: ");
+    DPRINTF("Enter roll number: ");
     scanf("%d", &student->roll);
 
 }
 
 static void update_fName(sStudentData_t* student)
 {
-    fflush(stdin);
-    printf("Enter first name: ");
+    DPRINTF("Enter first name: ");
     scanf("%s", student->fName);
 }
 
 static void update_lName(sStudentData_t* student)
 {
-    printf("Enter last name: ");
+    DPRINTF("Enter last name: ");
     scanf("%s", student->lName);
 }
 
 static void update_gpa(sStudentData_t* student)
 {
-    printf("Enter GPA: ");
+    DPRINTF("Enter GPA: ");
     scanf("%f", &student->GPA);
 }
 
@@ -338,7 +336,7 @@ static void update_Clist(sStudentData_t* student)
     int i;
     for(i = 0; i < 5; i++)
     {
-        printf("Enter course %d ID: ", i + 1);
+        DPRINTF("Enter course %d ID: ", i + 1);
         scanf("%d", &student->Cid[i]);
     }   
 
