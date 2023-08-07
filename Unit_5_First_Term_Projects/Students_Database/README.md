@@ -23,3 +23,4 @@
 * Note: To add student via a text file you should add the data in the text file called "student_data.txt" with a the order of [roll first_name last_name gpa course_list] with a space between each data element.
 
 ## Project video:
+![Video](https://drive.google.com/file/d/1QYmoFSCvFu7puwB8yCYj_JTCJ1jYbkCl/view?usp=sharing)
