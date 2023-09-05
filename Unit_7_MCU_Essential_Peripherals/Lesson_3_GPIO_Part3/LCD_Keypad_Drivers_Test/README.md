@@ -4,7 +4,5 @@
 - Anything you press on the Keypad will be shown on the LCD screen and the 7-segment display.
 
 ## Simulation video:
-
-
-https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/1ceb9c63-4bdc-495c-af8a-02ff60e478e2
+[Video](https://drive.google.com/drive/folders/1wj7hxaT0yNN1oyUAyaoAbTtRVdG-De2p?usp=drive_link)
 
