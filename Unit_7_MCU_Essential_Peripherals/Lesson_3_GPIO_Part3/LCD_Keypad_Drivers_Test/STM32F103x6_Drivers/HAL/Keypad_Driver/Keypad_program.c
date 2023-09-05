@@ -38,7 +38,7 @@ static uint8 KeypadColPins[] = {KEYPAD_COL0, KEYPAD_COL1, KEYPAD_COL2, KEYPAD_CO
  * @brief		:   Initializes the keypad by making the keypad row pins as input and the column pins as output.
  * @param [in]	:   none.
  * @param [out]	:   none.
- * @return_value :   none.
+ * @return_value:   none.
  * Note			:   none.
 ============================================================================================================
  */
@@ -85,7 +85,8 @@ void Keypad_Init(void)
  * @brief		:   Get the input character from the keypad.
  * @param [in]	:   none.
  * @param [out]	:   none.
- * @return_value :   none.
+ * @return_value:   The pressed character on the keypad which will be a value of @ref KEYPAD CHARACTERS
+                :   Or NULL_CHAR if no key was pressed.
  * Note			:   none.
 ============================================================================================================
  */
@@ -114,5 +115,5 @@ char Keypad_Get_Char(void)
 			}
 		}
 	}
-	return 'N';
+	return NULL_CHAR;
 }

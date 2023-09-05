@@ -62,6 +62,7 @@ the keys on the keypad.*/
     '1', '2', '3', '-', \
     'C', '0', '=', '+'} 
 
+#define NULL_CHAR 'N'
 /**************************************************************************************************************************
 ===============================================
 *       APIs Supported by "HAL KEYPAD DRIVER"
@@ -86,7 +87,8 @@ void Keypad_Init(void);
 * @brief		:   Get the input character from the keypad.
 * @param [in]	:   none.
 * @param [out]	:   none.
-* @return_value :   none.
+* @return_value :   The pressed character on the keypad which will be a value of @ref KEYPAD CHARACTERS
+                :   Or NULL_CHAR if no key was pressed.
 * Note			:   none.
 ============================================================================================================
 */
