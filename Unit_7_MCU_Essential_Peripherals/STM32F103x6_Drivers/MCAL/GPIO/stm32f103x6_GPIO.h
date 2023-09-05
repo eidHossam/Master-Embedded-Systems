@@ -194,6 +194,19 @@ void MCAL_GPIO_WritePin(volatile GPIO_t * GPIOx, uint16 pinNumber, uint8 value);
 void MCAL_GPIO_WritePort(volatile GPIO_t * GPIOx, uint16 value);
 
 /*
+================================================================================================
+* @Func_name	:   MCAL_GPIO_WriteByte.
+* @brief		:   Writes a byte on the GPIOx port.
+* @param [in]	:   GPIOx: where x can be (A >> E) to select the GPIO peripheral.
+* @param [in]	:   value: The value to be set on the port.
+* @param [in]	:   bytePosition: The first pin of the byte.
+* @return_value :   none.
+* Note			:   none.
+*================================================================================================
+*/
+void MCAL_GPIO_WriteByte(volatile GPIO_t * GPIOx, uint8 value, uint8 bytePosition);
+
+/*
 ===============================================================+
 * @Func_name	:   MCAL_GPIO_TogglePin.
 * @brief		:   Toggle the value of GPIOx PINy.

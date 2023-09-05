@@ -31,15 +31,15 @@
 *                   KEYPAD PINS
 *===============================================
 */
-#define KEYPAD_ROW0     GPIO_PIN3
-#define KEYPAD_ROW1     GPIO_PIN4
-#define KEYPAD_ROW2     GPIO_PIN5
-#define KEYPAD_ROW3     GPIO_PIN6
+#define KEYPAD_ROW0     GPIO_PIN0
+#define KEYPAD_ROW1     GPIO_PIN1
+#define KEYPAD_ROW2     GPIO_PIN3
+#define KEYPAD_ROW3     GPIO_PIN4
 
-#define KEYPAD_COL0     GPIO_PIN7
-#define KEYPAD_COL1     GPIO_PIN8
-#define KEYPAD_COL2     GPIO_PIN9
-#define KEYPAD_COL3     GPIO_PIN10
+#define KEYPAD_COL0     GPIO_PIN5
+#define KEYPAD_COL1     GPIO_PIN6
+#define KEYPAD_COL2     GPIO_PIN7
+#define KEYPAD_COL3     GPIO_PIN8
 
 /*
 *===============================================
