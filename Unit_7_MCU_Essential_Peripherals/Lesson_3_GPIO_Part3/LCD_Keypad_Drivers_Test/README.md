@@ -3,3 +3,7 @@
 - Anything you press on the Keypad will be shown on the LCD screen.
 
 ## Simulation video:
+
+
+https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/1ceb9c63-4bdc-495c-af8a-02ff60e478e2
+
