@@ -35,15 +35,20 @@
 */
 #define CORTEX_M3_INTERNAL_PERIPHERALS_MEMORY_BASE    	0xE0000000UL
 #define NVIC_BASE										(CORTEX_M3_INTERNAL_PERIPHERALS_MEMORY_BASE + 0xE100)
+
 /*================================================================*/
 //--------------------------------------
 //Base addresses for AHB BUS Peripherals
 //--------------------------------------
-#define RCC_BASE 0x40021000ul
+#define RCC_BASE 		0x40021000ul
 
 //--------------------------------------
 //Base addresses for APB1 BUS Peripherals
 //--------------------------------------
+
+/*----------USART-----------------*/
+#define USART2_BASE 	0x40004400ul
+#define USART3_BASE 	0x40004800ul
 
 //--------------------------------------
 //Base addresses for APB2 BUS Peripherals
@@ -53,17 +58,20 @@
 Note: LQFP48 package has PORT(A, B)
 ,part of PORT(C,D) and PORTE isn't
 used*/
-#define GPIOA_BASE 0x40010800ul
-#define GPIOB_BASE 0x40010C00ul
-#define GPIOC_BASE 0x40011000ul
-#define GPIOD_BASE 0x40011400ul
-#define GPIOE_BASE 0x40011800ul
+#define GPIOA_BASE 		0x40010800ul
+#define GPIOB_BASE 		0x40010C00ul
+#define GPIOC_BASE 		0x40011000ul
+#define GPIOD_BASE 		0x40011400ul
+#define GPIOE_BASE 		0x40011800ul
 
 /*----------AFIO-----------------*/
-#define AFIO_BASE 0x40010000ul
+#define AFIO_BASE 		0x40010000ul
 
 /*----------EXTI-----------------*/
-#define EXTI_BASE 0x40010400ul
+#define EXTI_BASE 		0x40010400ul
+
+/*----------USART-----------------*/
+#define USART1_BASE 	0x40013800ul
 
 /*================================================================*/
 //-*-*-*-*-*-*-*-*-*-*-*-
@@ -169,6 +177,16 @@ typedef struct{
 	vuint32_t PR;				/*Pending register*/
 }EXTI_t;
 
+/*----------USART registers-----------------*/
+typedef struct{
+	vuint32_t SR;            	/*USART status Register*/
+	vuint32_t DR;            	/*USART I/O data Register*/
+	vuint32_t BRR;            	/*USART baud-rate Register*/
+	vuint32_t CR1;            	/*USART control Register 1*/
+	vuint32_t CR2;            	/*USART control Register 2*/
+	vuint32_t CR3;            	/*USART control Register 3*/
+	vuint32_t GTPR;            	/*USART gaurd time & prescaler Register*/
+}USART_Typedef;
 
 /*================================================================*/
 //-*-*-*-*-*-*-*-*-*-*-*-
@@ -194,17 +212,26 @@ used*/
 /*---------------------EXTI---------------------------*/
 #define EXTI 		((volatile EXTI_t *)(EXTI_BASE))
 
+/*---------------------USART---------------------------*/
+#define USART1 		((volatile USART_Typedef *)(USART1_BASE))
+#define USART2 		((volatile USART_Typedef *)(USART2_BASE))
+#define USART3 		((volatile USART_Typedef *)(USART3_BASE))
+
 /*================================================================*/
 //Delete this part after making RCC driver
 //-*-*-*-*-*-*-*-*-*-*-*-
 //clock enable/reset Macros:
 //-*-*-*-*-*-*-*-*-*-*-*
 
-/*----------GPIO-----------------*/
 #define APB2_PERI_CLOCK_EN(periID) (SET_BIT(RCC->APB2ENR, periID))  /*PeriID must be a value of @ref APB2_ID*/
 
 #define APB2_PERI_RESET(periID) (SET_BIT(RCC->APB2RSTR, periID)); \
                                 (CLEAR_BIT(RCC->APB2RSTR, periID)) /*PeriID must be a value of @ref APB2_ID*/
+
+#define APB1_PERI_CLOCK_EN(periID) (SET_BIT(RCC->APB1ENR, periID))  /*PeriID must be a value of @ref APB1_ID*/
+
+#define APB1_PERI_RESET(periID) (SET_BIT(RCC->APB1RSTR, periID)); \
+                                (CLEAR_BIT(RCC->APB1RSTR, periID)) /*PeriID must be a value of @ref APB1_ID*/
 
 
 /*================================================================*/
@@ -213,14 +240,18 @@ used*/
 //---------------------------------
 /*================================================================*/
 
-/*@ref APB2_ID-------------*/
-#define APB2_AFIO 0
-#define APB2_IOPA 2
-#define APB2_IOPB 3
-#define APB2_IOPC 4
-#define APB2_IOPD 5
-#define APB2_IOPE 6
+/*@ref APB1_ID-------------*/
+#define APB1_USART2		17
+#define APB1_USART3		18
 
+/*@ref APB2_ID-------------*/
+#define APB2_AFIO 		0
+#define APB2_IOPA 		2
+#define APB2_IOPB 		3
+#define APB2_IOPC 		4
+#define APB2_IOPD 		5
+#define APB2_IOPE 		6
+#define APB2_USART1 	14
 /*================================================================*/
 //-*-*-*-*-*-*-*-*-*-*-*-
 //Generic Macros:
