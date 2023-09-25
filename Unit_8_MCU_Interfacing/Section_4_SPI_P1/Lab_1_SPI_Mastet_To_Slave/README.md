@@ -4,3 +4,7 @@
 - The data being sent is going to be displayed on a 7 segment display to show that each data is distinct.
 
 ## Simulation video:
+
+
+https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/2d99ab4e-9e25-442c-9e41-ffcfb22f661f
+
