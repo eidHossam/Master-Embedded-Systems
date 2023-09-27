@@ -4,6 +4,6 @@
 
 ## Simulation Video:
 
-[!Video](https://drive.google.com/file/d/1Ii2UGVPWFmlwUq1OHCH_vCA9J7Y1LY73/view?usp=drive_link)
+[Video](https://drive.google.com/file/d/1Ii2UGVPWFmlwUq1OHCH_vCA9J7Y1LY73/view?usp=drive_link)
 
 
