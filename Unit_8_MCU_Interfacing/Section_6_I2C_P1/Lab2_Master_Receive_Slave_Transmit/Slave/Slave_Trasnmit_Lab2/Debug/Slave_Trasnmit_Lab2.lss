@@ -1,0 +1,158 @@
+
+Slave_Trasnmit_Lab2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000b4  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000108  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000108  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000138  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000050  00000000  00000000  00000174  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000006c8  00000000  00000000  000001c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005f4  00000000  00000000  0000088c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002b4  00000000  00000000  00000e80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000068  00000000  00000000  00001134  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000033c  00000000  00000000  0000119c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000078  00000000  00000000  000014d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  00001550  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 4a 00 	call	0x94	; 0x94 <main>
+  64:	0c 94 58 00 	jmp	0xb0	; 0xb0 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <I2C_SetAddress>:
+#include "I2C.h"
+
+void I2C_SetAddress(uint8_t address)
+{
+	//Set the slave address
+	TWAR = address;
+  6c:	82 b9       	out	0x02, r24	; 2
+  6e:	08 95       	ret
+
+00000070 <I2C_Read>:
+{
+	/*TWEN must be written to one to enable the TWI.
+	The TWEA bit must be written to one to enable the acknowledgment
+	 of the device’s own slave address
+	or the general call address. TWSTA and TWSTO must be written to zero.*/
+	TWCR = ((ack << TWEA) | (1 << TWEN) | (1 << TWINT));
+  70:	20 e4       	ldi	r18, 0x40	; 64
+  72:	82 9f       	mul	r24, r18
+  74:	c0 01       	movw	r24, r0
+  76:	11 24       	eor	r1, r1
+  78:	84 68       	ori	r24, 0x84	; 132
+  7a:	86 bf       	out	0x36, r24	; 54
+	
+	while(!(TWCR & (1 << TWINT)));
+  7c:	06 b6       	in	r0, 0x36	; 54
+  7e:	07 fe       	sbrs	r0, 7
+  80:	fd cf       	rjmp	.-6      	; 0x7c <I2C_Read+0xc>
+	
+	return TWDR;
+  82:	83 b1       	in	r24, 0x03	; 3
+}
+  84:	08 95       	ret
+
+00000086 <I2C_Write>:
+
+void I2C_Write(uint8_t cByte)
+{
+	TWDR = cByte;
+  86:	83 b9       	out	0x03, r24	; 3
+	/*TWEN must be written to one to enable the TWI.
+	The TWEA bit must be written to one to enable the acknowledgment
+	 of the device’s own slave address
+	or the general call address. TWSTA and TWSTO must be written to zero.*/
+	TWCR = ((1 << TWINT) | (1 << TWEN));
+  88:	84 e8       	ldi	r24, 0x84	; 132
+  8a:	86 bf       	out	0x36, r24	; 54
+	
+	while(!(TWCR & (1 << TWINT)));
+  8c:	06 b6       	in	r0, 0x36	; 54
+  8e:	07 fe       	sbrs	r0, 7
+  90:	fd cf       	rjmp	.-6      	; 0x8c <I2C_Write+0x6>
+  92:	08 95       	ret
+
+00000094 <main>:
+#include "I2C.h"
+
+int main(void)
+{
+    uint8_t ch = 0;
+	I2C_SetAddress(0b11010000);     //Set Slave Address
+  94:	80 ed       	ldi	r24, 0xD0	; 208
+  96:	0e 94 36 00 	call	0x6c	; 0x6c <I2C_SetAddress>
+#include <avr/io.h>
+#include "I2C.h"
+
+int main(void)
+{
+    uint8_t ch = 0;
+  9a:	c0 e0       	ldi	r28, 0x00	; 0
+	I2C_SetAddress(0b11010000);     //Set Slave Address
+    
+	while (1) 
+    {
+		I2C_Read(1);
+  9c:	81 e0       	ldi	r24, 0x01	; 1
+  9e:	0e 94 38 00 	call	0x70	; 0x70 <I2C_Read>
+		I2C_Write(ch++);	
+  a2:	d1 e0       	ldi	r29, 0x01	; 1
+  a4:	dc 0f       	add	r29, r28
+  a6:	8c 2f       	mov	r24, r28
+  a8:	0e 94 43 00 	call	0x86	; 0x86 <I2C_Write>
+  ac:	cd 2f       	mov	r28, r29
+  ae:	f6 cf       	rjmp	.-20     	; 0x9c <main+0x8>
+
+000000b0 <_exit>:
+  b0:	f8 94       	cli
+
+000000b2 <__stop_program>:
+  b2:	ff cf       	rjmp	.-2      	; 0xb2 <__stop_program>
