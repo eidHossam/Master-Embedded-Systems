@@ -13,7 +13,7 @@
 uint16_t buffer = 0;
 uint16_t prec = 0;
 uint16_t max = 0;
-uint16_t oldBuffer = 0;
+uint16_t oldBuffer = 0xFFFF;
 char string[10];
 
 void callback(void)

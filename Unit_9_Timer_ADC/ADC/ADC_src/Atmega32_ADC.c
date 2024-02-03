@@ -28,7 +28,7 @@
   */
 sADC_Config_t ADC_CFG;
 
-Ptr_Func endOfConversionCallback;
+Ptr_Func endOfConversionCallback = NULL;
 /**
   * @}
   */
@@ -72,26 +72,28 @@ eStatus_t MCAL_ADC_Init(sADC_Config_t* cfg)
     }else{
         ADC_CFG = *cfg;
 
-        /*Enable the ADC module*/
-        ADC->ADCSRA = ADC_ADCSRA_ADEN_MASK;
-
         /*Setting the ADMUX register*/
-        ADC->ADMUX = 0;
+        ADC->ADMUX = 0x00;
         tempReg |= (cfg->ADC_channelSelection | cfg->ADC_ResultAlignment | cfg->ADC_ReferenceSelect);
         ADC->ADMUX = tempReg;
 
         /*Setting the ADCSRA register*/
+        ADC->ADCSRA = 0x00;
         tempReg = 0;
         tempReg |=  cfg->ADC_Prescaler;
-        ADC->ADCSRA &= ~(ADC_ADCSRA_ADPS_MASK);
-        ADC->ADCSRA |= tempReg;
-
 
         if(cfg->ADC_AutoTrigger != ADC_AutoTrigger_Disabled)
         {   
+            tempReg |= ADC_ADCSRA_ADATE_MASK;
+            
             SFIOR &= ~(SFIOR_ADTS_MASK);
             SFIOR |= cfg->ADC_AutoTrigger;
         }
+
+        ADC->ADCSRA |= tempReg;
+
+        /*Enable the ADC module*/
+        ADC->ADCSRA |= ADC_ADCSRA_ADEN_MASK;
     }
 
     return status;
@@ -128,17 +130,13 @@ eStatus_t MCAL_ADC_StartConversion()
     eStatus_t status = E_OK;
 
     /*In-case of auto trigger conversion mode*/
-    if(ADC_CFG.ADC_AutoTrigger != ADC_AutoTrigger_Disabled)
+    if(ADC_CFG.ADC_AutoTrigger != ADC_AutoTrigger_Disabled && !READ_BIT(ADC->ADCSRA, ADC_ADCSRA_ADATE_POS))
     {
         SET_BIT(ADC->ADCSRA, ADC_ADCSRA_ADATE_POS);
     }
 
-    /*In-case of single conversion and free running mode*/
-    if(ADC_CFG.ADC_AutoTrigger == ADC_AutoTrigger_Disabled ||
-       ADC_CFG.ADC_AutoTrigger == ADC_AutoTrigger_FreeRunning){
-        SET_BIT(ADC->ADCSRA, ADC_ADCSRA_ADSC_POS);
-    }
-    
+    SET_BIT(ADC->ADCSRA, ADC_ADCSRA_ADSC_POS);
+        
     return status;
 }
 
@@ -279,5 +277,8 @@ eStatus_t MCAL_ADC_Set_EOC_Callback(Ptr_Func callback)
 void __vector_16 (void) __attribute__((signal));
 void __vector_16 (void){
     
-    endOfConversionCallback();
+    if(endOfConversionCallback)
+    {
+        endOfConversionCallback();
+    }
 }
