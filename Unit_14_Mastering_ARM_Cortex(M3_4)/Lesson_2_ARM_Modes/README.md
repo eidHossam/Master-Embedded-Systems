@@ -41,7 +41,9 @@
 
 ## 2. Executing the EXTI line_9 ISR
 #### 1. After getting an external interrupt using the GPIOB_PIN9 the CPU uses the current stack to do the stacking which is the process of saving the current process state by pushing all the registers (R0 : R3) R12, LR, PC and xPSR onto the stack which is the MSP in our case.
+
 #### 2. Then the LR is loaded with a value to kepp track of the stack that was used to do the stacking to be able to return to the interrupted process again, The value in our case is **0xFFFFFFF9** this value indicates that we used the MSP to do the stacking process
+![LR](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/794ed871-0082-421e-b851-2faeff97cb4e)
 
 #### 3. The PC is loaded with the address of the ISR.
 
