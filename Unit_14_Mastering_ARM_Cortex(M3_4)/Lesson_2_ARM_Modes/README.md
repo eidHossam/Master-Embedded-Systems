@@ -34,11 +34,13 @@
 
 ## 1. Executing the main function
 
+![Thread_Mode](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/d01f2c2d-71c8-41dd-bf34-3568b32227fd)
 
 #### While running in the main function we can see that as we previously said we are running in the thread mode with privileged access and using the MSP as we didn't change either of them.
 
 
 ## 2. Executing the EXTI line_9 ISR
 
+![Handler_Mode](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/c3680a26-0cf0-433d-9293-d615785013ad)
 
 #### After getting an external interrupt using th GPIOB_PIN9 the operating mode was switched from the thread mode to the handler mode to indicate that we are currently running an ISR, The number of the ISR being executed can be seen in IPSR (Interrupt Program Status Register) in the ISR bits.
