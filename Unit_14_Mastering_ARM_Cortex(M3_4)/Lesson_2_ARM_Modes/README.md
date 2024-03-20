@@ -40,7 +40,15 @@
 
 
 ## 2. Executing the EXTI line_9 ISR
+#### 1. After getting an external interrupt using the GPIOB_PIN9 the CPU uses the current stack to do the stacking which is the process of saving the current process state by pushing all the registers (R0 : R3) R12, LR, PC and xPSR onto the stack which is the MSP in our case.
+#### 2. Then the LR is loaded with a value to kepp track of the stack that was used to do the stacking to be able to return to the interrupted process again, The value in our case is **0xFFFFFFF9** this value indicates that we used the MSP to do the stacking process
+
+#### 3. The PC is loaded with the address of the ISR.
+
+#### 4. the operating mode was switched from the thread mode to the handler mode to indicate that we are currently running an ISR, The number of the ISR being executed can be seen in IPSR (Interrupt Program Status Register) in the ISR bits.
 
 ![Handler_Mode](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/c3680a26-0cf0-433d-9293-d615785013ad)
 
-#### After getting an external interrupt using th GPIOB_PIN9 the operating mode was switched from the thread mode to the handler mode to indicate that we are currently running an ISR, The number of the ISR being executed can be seen in IPSR (Interrupt Program Status Register) in the ISR bits.
+#### 5. After finishing the ISR the CPU puts a special value (EXC_RETURN value are 0xFFFFFFF.) in the PC  to indicate that we have finished serving the ISR and Bits[3:0] of the EXC_RETURN value indicate the required return stack (MSP, PSP) and processor mode (Thread, Handler in-case of nested handlers).
+
+#### 6. The CPU then uses the value stored in the LR (R14) to know which stack is the process state stored at to be able to return to it, And it uses the value in the PC to determine which stack and processor mode to use after the return.
