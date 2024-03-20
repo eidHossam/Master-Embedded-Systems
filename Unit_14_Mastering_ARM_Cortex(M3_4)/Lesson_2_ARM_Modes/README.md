@@ -51,4 +51,4 @@
 
 #### 5. After finishing the ISR the CPU puts a special value (EXC_RETURN value are 0xFFFFFFF.) in the PC  to indicate that we have finished serving the ISR and Bits[3:0] of the EXC_RETURN value indicate the required return stack (MSP, PSP) and processor mode (Thread, Handler in-case of nested handlers).
 
-#### 6. The CPU then uses the value stored in the LR (R14) to know which stack is the process state stored at to be able to return to it, And it uses the value in the PC to determine which stack and processor mode to use after the return.
+#### 6. The CPU then uses the value stored in the LR (R14) to know which stack is the process state stored at **(MSP in our case)** to be able to return to it, And it uses the value in the PC to determine which stack and processor mode to use after the return **(MSP, Thread mode in our case)**.
