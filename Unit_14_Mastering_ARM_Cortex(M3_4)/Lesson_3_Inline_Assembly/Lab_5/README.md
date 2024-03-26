@@ -29,6 +29,18 @@ __asm("add %[out], %[in1], %[in2]"
 - The last column : "r2" res- erves register R2, preventing it from being used by the compiler.
 
 ## Program flow
+![Load_Operand1_Address](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/6e2d44c7-48b4-44c9-bb45-11af7eeb68af)
+
+![Load_Operand1_Value](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/811e0618-2665-4219-b8f2-577b966c8f5e)
+
+![Load_Operand2_Value](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/7bc87c28-6837-4846-9e6c-929684d4a815)
+
+![Add_Values](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/db10bcb7-ef8a-4a91-904d-693d9365b40c)
+
+![Load_Result_Address](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/0c51b442-d3e7-4e70-a17c-b41e205ed44f)
+
+![Store_Value_in_Result](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/f8377dc7-f3df-4251-9110-f2e9c2160b55)
+
 
 ## Conclusion
 This lab provides a hands-on exercise to understand how to integrate ARM inline assembly with C code. By following the provided instructions, participants can practice writing assembly instructions to perform arithmetic operations and manipulate data stored in C variables.
