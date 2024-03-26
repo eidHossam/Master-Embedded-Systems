@@ -1,7 +1,6 @@
 # Embedded Systems Diploma by Eng Keroles Shenouda "Learn in Depth"
 
-![image](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/dd2db349-ad2d-4225-9ba7-2a09d5399d51)https://www.learn-in-depth-store.com/certificate/eidhossam7%40gmail.com
-
+(https://www.learn-in-depth-store.com/certificate/eidhossam7%40gmail.com) ![image](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/dd2db349-ad2d-4225-9ba7-2a09d5399d51)
 ---
 
 ## Contents
@@ -27,7 +26,7 @@
 
 ---
 
-### Third Term ![image](https://progress-bar.dev/75)
+### Third Term ![image](https://progress-bar.dev/25)
 
 - [Unit 12: Intro to some advanced topics]() ![image](https://progress-bar.dev/0/)
 - [Unit 13: Mastering CAN Protocol]() ![image](https://progress-bar.dev/0/)
