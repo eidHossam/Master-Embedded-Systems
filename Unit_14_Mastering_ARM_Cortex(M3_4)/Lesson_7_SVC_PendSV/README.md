@@ -42,6 +42,8 @@ This project demonstrates how to handle Supervisor Calls (SVCall) on an ARM Cort
     prologue and epilogue for the function.
 
 3. Then the **SVC_Handler_main** C function will be called with the stack start address as the argument
+    We get the SVC number following this sequence
+    ![image](https://github.com/eidHossam/Master-Embedded-Systems/assets/106603484/21dc3463-d4b7-47e5-b2fd-8d2df6d8e7c6)
 
     Add the value that was in R0 and R1 and store the result in R0 place on the stack frame,
     Since we use R0 to return the value from the functions
