@@ -29,7 +29,7 @@
 ### Third Term ![image](https://progress-bar.dev/25)
 
 - [Unit 12: Intro to some advanced topics]() ![image](https://progress-bar.dev/0/)
-- [Unit 13: Mastering CAN Protocol]() ![image](https://progress-bar.dev/0/)
+- [Unit 13: Mastering CAN Protocol](Unit_13_Mastering_CAN) ![image](https://progress-bar.dev/100/)
 - [Unit 14: Mastering ARM CortexM3/4](Unit_14_Mastering_ARM_Cortex) ![image](https://progress-bar.dev/100/)
 - [Unit 15:Create Your Own RTOS]() ![image](https://progress-bar.dev/25/)
 
